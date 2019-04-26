@@ -1,5 +1,6 @@
 package com.example.immadisairaj.codeforces;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -42,7 +43,7 @@ public class SubmissionAdapter extends RecyclerView.Adapter<SubmissionAdapter.Su
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final SubmissionViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final SubmissionViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
         String qName, qCode, tags, creation_time, lang, verdict, time, memory;
 
