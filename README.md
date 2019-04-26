@@ -54,6 +54,9 @@ First time contributors can read [CONTRIBUTION.md](https://github.com/immadisair
 - Retrofit [Docs](http://square.github.io/retrofit/2.x/retrofit/)
 - Butter Knife [Docs](https://github.com/JakeWharton/butterknife/)
 - GSON Converter [Docs](https://github.com/square/retrofit/tree/master/retrofit-converters/gson/)
+- Glide [Docs](https://github.com/bumptech/glide)
+- Recycler View Animators [Docs](https://github.com/wasabeef/recyclerview-animators)
+- Custom Tabs [Docs](https://developer.android.com/reference/android/support/customtabs/package-summary)
 
 ### API Used
 
