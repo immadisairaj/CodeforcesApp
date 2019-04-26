@@ -7,7 +7,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Gitter](https://badges.gitter.im/immadisairaj/CodeforcesApp.svg)](https://gitter.im/immadisairaj/CodeforcesApp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/immadisairaj/CodeforcesApp.svg?branch=master)](https://travis-ci.org/immadisairaj/CodeforcesApp)
+[![Build Status](https://travis-ci.com/immadisairaj/CodeforcesApp.svg?branch=master)](https://travis-ci.com/immadisairaj/CodeforcesApp)
 [![Open Issues](https://img.shields.io/github/issues/immadisairaj/CodeforcesApp.svg)](https://GitHub.com/immadisairaj/CodeforcesApp/issues/)
 [![PRs](https://img.shields.io/github/issues-pr/immadisairaj/CodeforcesApp.svg)](https://GitHub.com/immadisairaj/CodeforcesApp/pulls/)
 [![Contributors](https://img.shields.io/github/contributors/immadisairaj/CodeforcesApp.svg)](https://GitHub.com/immadisairaj/CodeforcesApp/graphs/contributors/)
