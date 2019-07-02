@@ -1,5 +1,7 @@
 package com.example.immadisairaj.codeforces;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -125,11 +127,23 @@ public class SubmissionActivity extends AppCompatActivity {
         List<Result> result = submission.getResult();
 
         RecyclerView recyclerView = findViewById(R.id.rv_submission);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, getGridColumnsCount(this)));
         SubmissionAdapter submissionAdapter = new SubmissionAdapter(result);
         AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(submissionAdapter);
         alphaAdapter.setDuration(1500);
         recyclerView.setAdapter(new ScaleInAnimationAdapter(alphaAdapter));
+    }
+
+
+
+    
+    public static int getGridColumnsCount(Context context){
+        int orientation = context.getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            return 2;
+        } else {
+           return 3;
+        }
     }
 
 }
