@@ -1,6 +1,7 @@
 package com.example.immadisairaj.codeforces;
 
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,15 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.immadisairaj.codeforces.Api.Info.Info;
 import com.example.immadisairaj.codeforces.Api.Info.Result;
 import com.example.immadisairaj.codeforces.Api.Api;
-
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -85,15 +82,15 @@ public class InfoActivity extends AppCompatActivity {
                         swipeContainer.setRefreshing(false);
                         View loadingIndicator = findViewById(R.id.loading_indicator_info);
                         loadingIndicator.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getApplicationContext(), handle, Toast.LENGTH_SHORT).show();
+                        Snackbar.make(getWindow().getDecorView().getRootView(), handle , Snackbar.LENGTH_SHORT).show();
                         showInfo(info);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Wrong handle, Try Again", Toast.LENGTH_SHORT).show();
+                        Snackbar.make(getWindow().getDecorView().getRootView(), "Wrong handle, Try Again", Snackbar.LENGTH_SHORT).show();
                         InfoActivity.super.onBackPressed();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Wrong handle, Try Again", Toast.LENGTH_SHORT).show();
-                    InfoActivity.super.onBackPressed();
+                        Snackbar.make(getWindow().getDecorView().getRootView(), "Wrong handle, Try Again", Snackbar.LENGTH_SHORT).show();
+                         InfoActivity.super.onBackPressed();
                 }
 
             }
@@ -101,7 +98,7 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Info> call, Throwable t) {
                 swipeContainer.setRefreshing(false);
-                Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                Snackbar.make(getWindow().getDecorView().getRootView(), "No Internet Connection", Snackbar.LENGTH_SHORT).show();
                 if (countOfCalls == 0)
                     InfoActivity.super.onBackPressed();
             }

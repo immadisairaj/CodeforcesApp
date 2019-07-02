@@ -1,5 +1,6 @@
 package com.example.immadisairaj.codeforces;
 
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,14 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.immadisairaj.codeforces.Api.Submission.Result;
 import com.example.immadisairaj.codeforces.Api.Submission.Submission;
 import com.example.immadisairaj.codeforces.Api.Api;
-
 import java.util.List;
-
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter;
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
 import retrofit2.Call;
@@ -96,14 +93,13 @@ public class SubmissionActivity extends AppCompatActivity {
                             mEmptyView.setVisibility(View.VISIBLE);
                         else
                             mEmptyView.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getApplicationContext(), handle, Toast.LENGTH_SHORT).show();
                         showSubmissions(submission);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Wrong handle, Try Again", Toast.LENGTH_SHORT).show();
+                        Snackbar.make(getWindow().getDecorView().getRootView(),"Wrong handle, Try Again" , Snackbar.LENGTH_SHORT).show();
                         SubmissionActivity.super.onBackPressed();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Wrong handle, Try Again", Toast.LENGTH_SHORT).show();
+                    Snackbar.make(getWindow().getDecorView().getRootView(),"Wrong handle, Try Again" , Snackbar.LENGTH_SHORT).show();
                     SubmissionActivity.super.onBackPressed();
                 }
 
@@ -112,7 +108,7 @@ public class SubmissionActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Submission> call, Throwable t) {
                 swipeContainer.setRefreshing(false);
-                Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                Snackbar.make(getWindow().getDecorView().getRootView(),"No Internet Connection" , Snackbar.LENGTH_SHORT).show();
                 if (countOfCalls == 0)
                     SubmissionActivity.super.onBackPressed();
             }
