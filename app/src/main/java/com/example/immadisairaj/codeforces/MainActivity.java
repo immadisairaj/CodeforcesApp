@@ -36,6 +36,6 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtras(bundle);
             startActivity(intent);
         }
-    }
+    }  //a button can be tied to an onClick function so as to get the rating
 
 }

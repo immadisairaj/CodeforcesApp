@@ -53,6 +53,21 @@ public class Result {
     @SerializedName("maxRank")
     @Expose
     private String maxRank;
+    @SerializedName("contestId")
+    @Expose
+    private Integer contestId;
+    @SerializedName("contestName")
+    @Expose
+    private String contestName;
+    @SerializedName("ratingUpdateTimeSeconds")
+    @Expose
+    private Integer ratingUpdateTimeSeconds;
+    @SerializedName("oldRating")
+    @Expose
+    private Integer oldRating;
+    @SerializedName("newRating")
+    @Expose
+    private Integer newRating;
 
     public Result() {
     }
@@ -75,6 +90,18 @@ public class Result {
         this.maxRating = maxRating;
         this.registrationTimeSeconds = registrationTimeSeconds;
         this.maxRank = maxRank;
+    }
+    //using the one below to get rating
+
+    public Result(Integer contestId, String contestName, String handle, Integer rank, Integer ratingUpdation, Integer oldRating, Integer newRating) {
+        this.contestId = contestId;
+        this.contestName = contestName;
+        this.handle = handle;
+        this.rank = rank;
+        this.ratingUpdateTimeSeconds = ratingUpdation;
+        this.oldRating = oldRating;
+        this.newRating = newRating;
+
     }
 
     public String getLastName() {
@@ -140,5 +167,15 @@ public class Result {
     public String getMaxRank() {
         return maxRank;
     }
+
+    public Integer getContestId() { return contestId; }
+
+    public String getContestName() { return contestName; }
+
+    public Integer getRatingUpdateTimeSeconds() { return ratingUpdateTimeSeconds; }
+
+    public Integer getOldRating() { return oldRating; }
+
+    public Integer getNewRating() { return newRating; }
 
 }
