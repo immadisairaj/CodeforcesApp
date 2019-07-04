@@ -20,72 +20,72 @@
                 android:id="@+id/ll_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/margin_10"
                 android:orientation="vertical"
-                android:padding="10dp">
+                android:padding="@dimen/padding_10">
 
                 <ImageView
                     android:id="@+id/iv_image"
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
+                    android:layout_width="@dimen/width_250"
+                    android:layout_height="@dimen/height_250"
                     android:layout_gravity="center"
-                    android:padding="5dp" />
+                    android:padding="@dimen/padding_5" />
 
                 <TextView
                     android:id="@+id/tv_name_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:padding="1dp"
-                    android:textSize="20sp" />
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
 
                 <TextView
                     android:id="@+id/tv_country_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:padding="1dp"
-                    android:textSize="20sp" />
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
 
                 <TextView
                     android:id="@+id/tv_organization_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:padding="1dp"
-                    android:textSize="20sp" />
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
 
                 <TextView
                     android:id="@+id/tv_rating_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:padding="1dp"
-                    android:textSize="20sp" />
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
 
                 <TextView
                     android:id="@+id/tv_max_rating_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:padding="1dp"
-                    android:textSize="20sp" />
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
 
                 <TextView
                     android:id="@+id/tv_rank_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:padding="1dp"
-                    android:textSize="20sp" />
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
 
                 <TextView
                     android:id="@+id/tv_max_rank_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:padding="1dp"
-                    android:textSize="20sp" />
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
 
                 <Button
                     android:id="@+id/button_submission"
@@ -105,12 +105,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_marginBottom="@dimen/margin_8"
                 android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="@+id/ll_info"
                 app:layout_constraintEnd_toEndOf="@+id/ll_info"

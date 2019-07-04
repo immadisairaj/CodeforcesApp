@@ -6,10 +6,10 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cv_submission"
-        android:layout_width="160dp"
-        android:layout_height="230dp"
-        android:layout_margin="10dp"
-        android:padding="10dp">
+        android:layout_width="@dimen/width_160"
+        android:layout_height="@dimen/height_230"
+        android:layout_margin="@dimen/margin_10"
+        android:padding="@dimen/padding_10">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,24 +19,24 @@
             <TextView
                 android:id="@+id/tv_qName"
                 android:layout_width="wrap_content"
-                android:layout_height="52dp"
+                android:layout_height="@dimen/height_52"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="17sp"
+                android:textSize="@dimen/text_17"
                 tools:text="Question Name" />
 
             <TextView
                 android:id="@+id/tv_qCode"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="@dimen/height_35"
                 android:layout_gravity="center"
-                android:textSize="17sp"
+                android:textSize="@dimen/text_17"
                 tools:text="111A" />
 
             <TextView
                 android:id="@+id/tv_tags"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/height_40"
                 android:layout_gravity="center"
                 android:gravity="center"
                 tools:text="tags" />
@@ -44,40 +44,40 @@
             <TextView
                 android:id="@+id/tv_lang"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="@dimen/height_20"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="15sp"
+                android:textSize="@dimen/text_15"
                 tools:text="Programming Language" />
 
             <TextView
                 android:id="@+id/tv_creation_time"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="@dimen/height_20"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="13sp"
+                android:textSize="@dimen/text_13"
                 tools:text="Aug, 2018" />
 
             <TextView
                 android:id="@+id/tv_verdict"
                 android:layout_width="wrap_content"
-                android:layout_height="22dp"
+                android:layout_height="@dimen/height_22"
                 android:layout_gravity="center"
-                android:textSize="13sp"
+                android:textSize="@dimen/text_13"
                 tools:text="COMPILATION_ERROR" />
 
             <TextView
                 android:id="@+id/tv_time"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="@dimen/height_20"
                 android:layout_gravity="center"
                 tools:text="time" />
 
             <TextView
                 android:id="@+id/tv_memory"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
+                android:layout_height="@dimen/height_20"
                 android:layout_gravity="center"
                 tools:text="memory" />
 
