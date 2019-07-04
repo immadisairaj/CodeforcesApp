@@ -48,6 +48,15 @@ First time contributors can read [CONTRIBUTION.md](https://github.com/immadisair
 
 7. If the app was built successfully, you can test it by running it on either a real device or an emulated one by going to _Run>Run 'app'_ or pressing the Run icon in the toolbar.
 
+### Screenshots 
+
+<table>
+  <tr>
+    <td><img src="https://user-images.githubusercontent.com/51189244/60682963-fbf4c300-9eb2-11e9-9a18-acae349adc00.jpeg" height = "480" width="270"></td>
+    <td><img src="https://user-images.githubusercontent.com/51189244/60667688-c1c1fc00-9e87-11e9-8d2a-364a1d95f2cf.jpeg" height = "480" width="270"></td>
+    <td><img src="https://user-images.githubusercontent.com/51189244/60684070-42e5b700-9eb9-11e9-923e-05e34e8db090.jpeg" height = "480" width="270"></td>
+  </tr>
+</table>
 
 ### Libraries used and their documentation
 
