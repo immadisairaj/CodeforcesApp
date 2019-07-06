@@ -1,11 +1,13 @@
 package com.example.immadisairaj.codeforces;
 
+import android.content.Intent;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -129,5 +131,11 @@ public class SubmissionActivity extends AppCompatActivity {
         AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(submissionAdapter);
         alphaAdapter.setDuration(1500);
         recyclerView.setAdapter(new ScaleInAnimationAdapter(alphaAdapter));
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent myIntent = new Intent(getApplicationContext(), InfoActivity.class);
+        startActivityForResult(myIntent, 0);
+        return true;
     }
 }
