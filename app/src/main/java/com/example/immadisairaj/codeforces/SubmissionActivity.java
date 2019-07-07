@@ -95,11 +95,11 @@ public class SubmissionActivity extends AppCompatActivity {
                             mEmptyView.setVisibility(View.INVISIBLE);
                         showSubmissions(submission);
                     } else {
-                        Snackbar.make(getWindow().getDecorView().getRootView(),"Wrong handle, Try Again" , Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(getWindow().getDecorView().getRootView(),"Wrong handle, Try Again", Snackbar.LENGTH_SHORT).show();
                         SubmissionActivity.super.onBackPressed();
                     }
                 } else {
-                    Snackbar.make(getWindow().getDecorView().getRootView(),"Wrong handle, Try Again" , Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(getWindow().getDecorView().getRootView(),"Wrong handle, Try Again", Snackbar.LENGTH_SHORT).show();
                     SubmissionActivity.super.onBackPressed();
                 }
 
@@ -108,7 +108,7 @@ public class SubmissionActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Submission> call, Throwable t) {
                 swipeContainer.setRefreshing(false);
-                Snackbar.make(getWindow().getDecorView().getRootView(),"No Internet Connection" , Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(getWindow().getDecorView().getRootView(),"No Internet Connection", Snackbar.LENGTH_SHORT).show();
                 if (countOfCalls == 0)
                     SubmissionActivity.super.onBackPressed();
             }
