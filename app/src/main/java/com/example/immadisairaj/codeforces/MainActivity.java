@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             reEnter.setVisibility(View.GONE);
             Intent intent = new Intent(this, InfoActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putString("handle", handle);
+            bundle.putString(getString(R.string.handle), handle);
             intent.putExtras(bundle);
             startActivity(intent);
         }

@@ -33,6 +33,7 @@ public class SubmissionActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeContainer;
 
     private SubmissionAdapter submissionAdapter;
+    private static final String URL = "url";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class SubmissionActivity extends AppCompatActivity {
         loadingIndicator.setVisibility(View.VISIBLE);
 
         Bundle bundle = getIntent().getExtras();
-        handle = bundle.getString("handle");
+        handle = bundle.getString(getString(R.string.handle));
 
         submissionAdapter = new SubmissionAdapter();
 
@@ -79,14 +80,14 @@ public class SubmissionActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Submission> call, Response<Submission> response) {
 
-                Log.v("url", call.request().url().toString());
+                Log.v(URL, call.request().url().toString());
 
                 Submission submission = response.body();
 
                 String status;
                 if (submission != null) {
                     status = submission.getStatus();
-                    if (status.equals("OK")) {
+                    if (status.equals(getString(R.string.OK))) {
                         countOfCalls++;
                         swipeContainer.setRefreshing(false);
                         View loadingIndicator = findViewById(R.id.loading_indicator_submission);
@@ -99,11 +100,11 @@ public class SubmissionActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), handle, Toast.LENGTH_SHORT).show();
                         showSubmissions(submission);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Wrong handle, Try Again", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.WrongHandle), Toast.LENGTH_SHORT).show();
                         SubmissionActivity.super.onBackPressed();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Wrong handle, Try Again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.WrongHandle), Toast.LENGTH_SHORT).show();
                     SubmissionActivity.super.onBackPressed();
                 }
 
@@ -112,7 +113,7 @@ public class SubmissionActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Submission> call, Throwable t) {
                 swipeContainer.setRefreshing(false);
-                Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.NoInternetConnection), Toast.LENGTH_SHORT).show();
                 if (countOfCalls == 0)
                     SubmissionActivity.super.onBackPressed();
             }
@@ -130,4 +131,5 @@ public class SubmissionActivity extends AppCompatActivity {
         alphaAdapter.setDuration(1500);
         recyclerView.setAdapter(new ScaleInAnimationAdapter(alphaAdapter));
     }
+
 }

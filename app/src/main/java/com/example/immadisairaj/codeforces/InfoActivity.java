@@ -43,7 +43,7 @@ public class InfoActivity extends AppCompatActivity {
         loadingIndicator.setVisibility(View.VISIBLE);
 
         Bundle bundle = getIntent().getExtras();
-        handle = bundle.getString("handle");
+        handle = bundle.getString(getString(R.string.handle));
 
         fetchApi();
 
@@ -80,7 +80,7 @@ public class InfoActivity extends AppCompatActivity {
                 String status;
                 if (info != null) {
                     status = info.getStatus();
-                    if (status.equals("OK")) {
+                    if (status.equals(getString(R.string.OK))) {
                         countOfCalls++;
                         swipeContainer.setRefreshing(false);
                         View loadingIndicator = findViewById(R.id.loading_indicator_info);
@@ -88,11 +88,11 @@ public class InfoActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), handle, Toast.LENGTH_SHORT).show();
                         showInfo(info);
                     } else {
-                        Toast.makeText(getApplicationContext(), "Wrong handle, Try Again", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getString(R.string.WrongHandle), Toast.LENGTH_SHORT).show();
                         InfoActivity.super.onBackPressed();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Wrong handle, Try Again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.WrongHandle), Toast.LENGTH_SHORT).show();
                     InfoActivity.super.onBackPressed();
                 }
 
@@ -101,7 +101,7 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Info> call, Throwable t) {
                 swipeContainer.setRefreshing(false);
-                Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.NoInternetConnection), Toast.LENGTH_SHORT).show();
                 if (countOfCalls == 0)
                     InfoActivity.super.onBackPressed();
             }
@@ -120,33 +120,33 @@ public class InfoActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.tv_name_info);
         if (result.getFirstName() != null)
-            textView.setText("Name : " + result.getFirstName() + " " + result.getLastName());
+            textView.setText(getString(R.string.Name) + result.getFirstName() + " " + result.getLastName());
         else
-            textView.setText("Name : Not Provided by user");
+            textView.setText(getString(R.string.Name) + getString(R.string.Not_Provided));
 
         textView = findViewById(R.id.tv_country_info);
         if (result.getCity() != null)
-            textView.setText("City : " + result.getCity() + ", " + result.getCountry());
+            textView.setText(getString(R.string.City) + result.getCity() + ", " + result.getCountry());
         else
-            textView.setText("City : Not Provided by user");
+            textView.setText(getString(R.string.City) + getString(R.string.City_Not_Provided));
 
         textView = findViewById(R.id.tv_organization_info);
         if (result.getOrganization() != null)
-            textView.setText("Organization : " + result.getOrganization());
+            textView.setText(getString(R.string.Organization) + result.getOrganization());
         else
-            textView.setText("Organization : Not Provided by user");
+            textView.setText(getString(R.string.Organization) + getString(R.string.Organization_Not_Provided));
 
         textView = findViewById(R.id.tv_rating_info);
-        textView.setText("Rating : " + result.getRating().toString());
+        textView.setText(getString(R.string.Rating) + result.getRating().toString());
 
         textView = findViewById(R.id.tv_max_rating_info);
-        textView.setText("Max Rating : " + result.getMaxRating().toString());
+        textView.setText(getString(R.string.Max_Rating) + result.getMaxRating().toString());
 
         textView = findViewById(R.id.tv_rank_info);
-        textView.setText("Rank : " + result.getRank());
+        textView.setText(getString(R.string.Rank) + result.getRank());
 
         textView = findViewById(R.id.tv_max_rank_info);
-        textView.setText("Max Rank : " + result.getMaxRank());
+        textView.setText(getString(R.string.Max_Rank) + result.getMaxRank());
 
         Button button = findViewById(R.id.button_submission);
         button.setVisibility(View.VISIBLE);
@@ -156,7 +156,7 @@ public class InfoActivity extends AppCompatActivity {
     public void onClickSubmission(View view) {
         Intent intent = new Intent(this, SubmissionActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("handle", handle);
+        bundle.putString(getString(R.string.handle), handle);
         intent.putExtras(bundle);
         startActivity(intent);
     }
