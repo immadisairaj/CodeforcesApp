@@ -25,6 +25,10 @@
             android:parentActivityName="com.example.immadisairaj.codeforces.MainActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.example.immadisairaj.codeforces.RatingActivity"
+            android:parentActivityName="com.example.immadisairaj.codeforces.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.example.immadisairaj.codeforces.SubmissionActivity"
             android:parentActivityName="com.example.immadisairaj.codeforces.InfoActivity"
             android:screenOrientation="portrait" />

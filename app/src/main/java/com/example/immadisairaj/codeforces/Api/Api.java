@@ -1,6 +1,7 @@
 package com.example.immadisairaj.codeforces.Api;
 
 import com.example.immadisairaj.codeforces.Api.Info.Info;
+import com.example.immadisairaj.codeforces.Api.Rating.Rating;
 import com.example.immadisairaj.codeforces.Api.Submission.Submission;
 
 import retrofit2.Call;
@@ -20,5 +21,7 @@ public interface Api {
     @GET("user.info")
     Call<Info> getInfo(
             @Query("handles") String handle);
-
+    @GET("user.rating")
+    Call<Rating> getRating(
+            @Query("handle") String handle);
 }

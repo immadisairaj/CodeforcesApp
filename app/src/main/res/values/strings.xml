@@ -1,8 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Codeforces</string>
     <string name="enter_handle">Enter Codeforces Handle</string>
     <string name="enter_handle_again">Don\'t leave it empty</string>
     <string name="only_one_handle">Give only one handle</string>
+    <string name="handle">Handle???</string>
+    <string name="user_info">User Info</string>
+    <string name="user_rating">User Rating</string>
+    <string name="recent_submission">Recent submissions</string>
+    <string name ="review_head">Review:</string>
+    <string name="welcome">Welcome</string>
     <string name="status">status</string>
     <string name="result">result</string>
     <string name="handle">handle</string>
