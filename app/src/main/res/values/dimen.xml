@@ -26,4 +26,5 @@
     <dimen name="text_15">15sp</dimen>
     <dimen name="text_13">13sp</dimen>
     <dimen name="text_25">25sp</dimen>
+    <dimen name="zero">0dp</dimen>
 </resources>

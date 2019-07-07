@@ -1,37 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.immadisairaj.codeforces.MainActivity">
 
-    <TextView
-        android:layout_width="@dimen/width_330"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/margin_110"
-        android:gravity="center"
-        android:text="@string/enter_handle"
-        android:textSize="@dimen/text_25" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/et_handle"
-        android:layout_width="@dimen/width_200"
-        android:layout_height="@dimen/height_40"
-        android:layout_centerInParent="true"
-        android:hint="@string/handle" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_45"
+            android:contentDescription="@string/welcome"
+            android:src="@drawable/welcome" />
 
-    <Button
-        android:layout_width="@dimen/width_30"
-        android:layout_height="@dimen/height_30"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/margin_45"
-        android:layout_marginRight="@dimen/margin_45"
-        android:background="@drawable/next"
-        android:onClick="next" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/enter_handle"
+            android:textSize="@dimen/text_25" />
+
+        <EditText
+            android:id="@+id/et_handle"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_35"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin_45"
+            android:hint="@string/handle"
+            android:padding="@dimen/padding_5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/Infoget"
+                android:layout_width="@dimen/zero"
+                android:layout_height="@dimen/height_40"
+                android:layout_weight="1"
+                android:onClick="infoGetter"
+                android:padding="@dimen/padding_10"
+                android:text="@string/user_info" />
+
+            <Button
+                android:id="@+id/ratingget"
+                android:layout_width="@dimen/zero"
+                android:layout_height="@dimen/height_40"
+                android:layout_weight="1"
+                android:onClick="ratingGetter"
+                android:padding="@dimen/padding_10"
+                android:text="@string/user_rating" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_re_enter"

@@ -31,4 +31,9 @@
     <string name="memoryConsumedBytes">memoryConsumedBytes</string>
     <string name="recent_submissions">Recent Submissions</string>
     <string name="no_submissions">No Submissions</string>
+    <string name="welcome">Welcome</string>
+    <string name="user_info">User Info</string>
+    <string name="user_rating">User Rating</string>
+    <string name="review_head">Review:</string>
+    <string name="recent_submission">Recent Submissions</string>
 </resources>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.immadisairaj.codeforces.RatingActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:id="@+id/ll_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_10"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_10"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp">
+
+                <TextView
+                    android:id="@+id/tv_contestId_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/height_52"
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_25"
+                    android:gravity="center"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:id="@+id/tv_contestName_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
+
+                <TextView
+                    android:id="@+id/tv_handle_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
+
+                <TextView
+                    android:id="@+id/tv_rank_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
+
+                <TextView
+                    android:id="@+id/tv_your_ratings_are_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/padding_1"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_25"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/tv_old_rating_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
+
+                <TextView
+                    android:id="@+id/tv_new_rating_rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/padding_1"
+                    android:textSize="@dimen/text_20" />
+
+                <TextView
+                    android:id="@+id/tv_review_heading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_1"
+                    android:text="@string/review_head"
+                    android:textSize="@dimen/text_25"
+                    android:visibility="gone"
+                    android:textColor="#000000"/>
+
+                <TextView
+                    android:id="@+id/tv_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_20"
+                    android:padding="@dimen/padding_5"/>
+
+
+                <Button
+                    android:id="@+id/button_submission"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:onClick="onClickSubmission"
+                    android:text="@string/recent_submission"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+
+            <ProgressBar
+                android:id="@+id/loading_indicator_info"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginLeft="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_8"
+                android:layout_marginRight="@dimen/margin_8"
+                android:layout_marginBottom="@dimen/margin_8"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/ll_info"
+                app:layout_constraintEnd_toEndOf="@+id/ll_info"
+                app:layout_constraintStart_toStartOf="@+id/ll_info"
+                app:layout_constraintTop_toTopOf="@+id/ll_info" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+</android.support.v4.widget.SwipeRefreshLayout>
