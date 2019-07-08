@@ -1,5 +1,6 @@
 package com.example.immadisairaj.codeforces.Api.Submission;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Result {
@@ -16,6 +17,8 @@ public class Result {
     private Integer timeConsumedMillis;
     @SerializedName("memoryConsumedBytes")
     private Integer memoryConsumedBytes;
+    @SerializedName("id")
+    private Integer id;
 
     public Result(String verdict, Problem problem, Integer creationTimeSeconds, String programmingLanguage, int timeConsumedMillis, int memoryConsumedBytes) {
         this.verdict = verdict;
@@ -49,4 +52,9 @@ public class Result {
     public Integer getMemoryConsumedBytes() {
         return memoryConsumedBytes;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
 }

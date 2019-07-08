@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,8 +101,10 @@ public class SubmissionAdapter extends RecyclerView.Adapter<SubmissionAdapter.Su
                 if (submissionList.get(position).getProblem().getProblemsetName() == null) {
                     if (submissionList.get(position).getProblem().getContestId() >= 100000)
                         url += "gym/" + submissionList.get(position).getProblem().getContestId() + "/problem/" + submissionList.get(position).getProblem().getIndex();
-                    else
-                        url += "problemset/problem/" + submissionList.get(position).getProblem().getContestId() + "/" + submissionList.get(position).getProblem().getIndex();
+                    else {
+                        url += "contest/" + submissionList.get(position).getProblem().getContestId() + "/submission/" + submissionList.get(position).getId();
+                        Log.v("URL :", url);
+                    }
                 } else {
                     url += "problemsets/acmsguru/problem/99999/" + submissionList.get(position).getProblem().getIndex();
                 }
