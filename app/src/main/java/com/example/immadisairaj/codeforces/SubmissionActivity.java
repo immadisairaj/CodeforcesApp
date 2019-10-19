@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -70,6 +71,16 @@ public class SubmissionActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+onBackPressed();
+break;
+        }
+        return true;
+    }
+
     public void fetchApi() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
@@ -121,6 +132,8 @@ public class SubmissionActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     public void showSubmissions(Submission submission) {
 
