@@ -1,20 +1,23 @@
 package com.example.immadisairaj.codeforces;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.provider.Settings;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.immadisairaj.codeforces.Api.Api;
 import com.example.immadisairaj.codeforces.Api.Info.Info;
 import com.example.immadisairaj.codeforces.Api.Info.Result;
-import com.example.immadisairaj.codeforces.Api.Api;
 
 import java.util.List;
 
@@ -31,6 +34,9 @@ public class InfoActivity extends AppCompatActivity {
     private int countOfCalls;
 
     private SwipeRefreshLayout swipeContainer;
+    private CoordinatorLayout coordinatorLayout;
+    private static final Handler handler = new Handler();
+    public static final int BACKPRESS_DELAY_SECONDS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +54,7 @@ public class InfoActivity extends AppCompatActivity {
         fetchApi();
 
         swipeContainer = findViewById(R.id.swipeContainer);
-
+        coordinatorLayout = findViewById(R.id.coordinator_layout);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
             @Override
@@ -85,15 +91,17 @@ public class InfoActivity extends AppCompatActivity {
                         swipeContainer.setRefreshing(false);
                         View loadingIndicator = findViewById(R.id.loading_indicator_info);
                         loadingIndicator.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getApplicationContext(), handle, Toast.LENGTH_SHORT).show();
+                        Snackbar.make(coordinatorLayout, handle, Snackbar.LENGTH_SHORT).show();
                         showInfo(info);
                     } else {
-                        Toast.makeText(getApplicationContext(), getString(R.string.WrongHandle), Toast.LENGTH_SHORT).show();
-                        InfoActivity.super.onBackPressed();
+                        Snackbar.make(coordinatorLayout, getString(R.string.WrongHandle), Snackbar.LENGTH_SHORT).show();
+                        delayedBackpress();
+                        //InfoActivity.super.onBackPressed();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.WrongHandle), Toast.LENGTH_SHORT).show();
-                    InfoActivity.super.onBackPressed();
+                    Snackbar.make(coordinatorLayout, getString(R.string.WrongHandle), Snackbar.LENGTH_SHORT).show();
+                    delayedBackpress();
+                    //InfoActivity.super.onBackPressed();
                 }
 
             }
@@ -101,11 +109,30 @@ public class InfoActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Info> call, Throwable t) {
                 swipeContainer.setRefreshing(false);
-                Toast.makeText(getApplicationContext(), getString(R.string.NoInternetConnection), Toast.LENGTH_SHORT).show();
+                Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_SHORT)
+                        .setAction("Settings", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+                                startActivity(intent);
+                            }
+                        })
+                        .show();
                 if (countOfCalls == 0)
-                    InfoActivity.super.onBackPressed();
+                    delayedBackpress();
+                // InfoActivity.super.onBackPressed();
             }
         });
+    }
+
+    // Navigates to previous activity after specified delay
+    private void delayedBackpress() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                InfoActivity.super.onBackPressed();
+            }
+        }, BACKPRESS_DELAY_SECONDS * 1000);
     }
 
     public void showInfo(Info info) {
