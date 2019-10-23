@@ -53,6 +53,8 @@ public class Result {
     @SerializedName("maxRank")
     @Expose
     private String maxRank;
+    // For profile view
+    private String address;
 
     public Result() {
     }
@@ -141,4 +143,75 @@ public class Result {
         return maxRank;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setLastOnlineTimeSeconds(Integer lastOnlineTimeSeconds) {
+        this.lastOnlineTimeSeconds = lastOnlineTimeSeconds;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setRating(Integer rating) {
+        this.rating = rating;
+    }
+
+    public void setFriendOfCount(Integer friendOfCount) {
+        this.friendOfCount = friendOfCount;
+    }
+
+    public void setTitlePhoto(String titlePhoto) {
+        this.titlePhoto = titlePhoto;
+    }
+
+    public void setHandle(String handle) {
+        this.handle = handle;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setContribution(Integer contribution) {
+        this.contribution = contribution;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public void setMaxRating(Integer maxRating) {
+        this.maxRating = maxRating;
+    }
+
+    public void setRegistrationTimeSeconds(Integer registrationTimeSeconds) {
+        this.registrationTimeSeconds = registrationTimeSeconds;
+    }
+
+    public void setMaxRank(String maxRank) {
+        this.maxRank = maxRank;
+    }
 }

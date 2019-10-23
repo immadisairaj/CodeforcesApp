@@ -2,19 +2,21 @@ package com.example.immadisairaj.codeforces;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.immadisairaj.codeforces.Api.Api;
 import com.example.immadisairaj.codeforces.Api.Submission.Result;
 import com.example.immadisairaj.codeforces.Api.Submission.Submission;
-import com.example.immadisairaj.codeforces.Api.Api;
 
 import java.util.List;
 
@@ -36,6 +38,7 @@ public class SubmissionActivity extends AppCompatActivity {
 
     private SubmissionAdapter submissionAdapter;
     private static final String URL = "url";
+    private CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +50,10 @@ public class SubmissionActivity extends AppCompatActivity {
         View loadingIndicator = findViewById(R.id.loading_indicator_submission);
         loadingIndicator.setVisibility(View.VISIBLE);
 
+        coordinatorLayout = findViewById(R.id.coordinator_layout);
+
         Bundle bundle = getIntent().getExtras();
-        handle = bundle.getString(getString(R.string.handle));
+        handle = bundle.getString(getString(R.string.label_handle));
 
         submissionAdapter = new SubmissionAdapter();
 
@@ -70,6 +75,16 @@ public class SubmissionActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
+    }
+
     public void fetchApi() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
@@ -89,7 +104,7 @@ public class SubmissionActivity extends AppCompatActivity {
                 String status;
                 if (submission != null) {
                     status = submission.getStatus();
-                    if (status.equals(getString(R.string.OK))) {
+                    if (status.equals(getString(R.string.label_ok))) {
                         countOfCalls++;
                         swipeContainer.setRefreshing(false);
                         View loadingIndicator = findViewById(R.id.loading_indicator_submission);
@@ -99,14 +114,18 @@ public class SubmissionActivity extends AppCompatActivity {
                             mEmptyView.setVisibility(View.VISIBLE);
                         else
                             mEmptyView.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getApplicationContext(), handle, Toast.LENGTH_SHORT).show();
+                        Snackbar.make(coordinatorLayout, handle, Snackbar.LENGTH_SHORT).show();
                         showSubmissions(submission);
                     } else {
-                        Toast.makeText(getApplicationContext(), getString(R.string.WrongHandle), Toast.LENGTH_SHORT).show();
+                        // is it relevant ? IMO you can render empty view here.
+                        Snackbar.make(coordinatorLayout, getString(R.string.msg_wrong_handle), Snackbar.LENGTH_SHORT).show();
+                        // TODO: Delayed backpress
                         SubmissionActivity.super.onBackPressed();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.WrongHandle), Toast.LENGTH_SHORT).show();
+                    // is it relevant ? IMO you can render empty view here.
+                    Snackbar.make(coordinatorLayout, getString(R.string.msg_wrong_handle), Snackbar.LENGTH_SHORT).show();
+                    // TODO: Delayed backpress
                     SubmissionActivity.super.onBackPressed();
                 }
 
@@ -115,7 +134,8 @@ public class SubmissionActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Submission> call, Throwable t) {
                 swipeContainer.setRefreshing(false);
-                Toast.makeText(getApplicationContext(), getString(R.string.NoInternetConnection), Toast.LENGTH_SHORT).show();
+                Snackbar.make(coordinatorLayout, handle, Snackbar.LENGTH_SHORT).show();
+                // Toast.makeText(getApplicationContext(), getString(R.string.NoInternetConnection), Toast.LENGTH_SHORT).show();
                 if (countOfCalls == 0)
                     SubmissionActivity.super.onBackPressed();
             }
