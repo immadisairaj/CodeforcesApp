@@ -72,4 +72,4 @@ This project Code of Conduct is under the Contributor Covenant, see the [CODE_OF
 
 ## License
 
-This project is licensed under the Apache License, see the [LICENSE.md](https://github.com/immadisairaj/CodeforcesApp/blob/master/LICENSE) for more details.
+This project is licensed under the Apache License, see the [LICENSE.md](https://github.com/immadisairaj/CodeforcesApp/blob/master/LICENSE) for more details contact.
