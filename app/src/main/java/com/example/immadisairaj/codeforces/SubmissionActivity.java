@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -52,7 +53,7 @@ public class SubmissionActivity extends AppCompatActivity {
         coordinatorLayout = findViewById(R.id.coordinator_layout);
 
         Bundle bundle = getIntent().getExtras();
-        handle = bundle.getString(getString(R.string.handle));
+        handle = bundle.getString(getString(R.string.label_handle));
 
         submissionAdapter = new SubmissionAdapter();
 
@@ -74,6 +75,16 @@ public class SubmissionActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
+    }
+
     public void fetchApi() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.BASE_URL)
@@ -93,7 +104,7 @@ public class SubmissionActivity extends AppCompatActivity {
                 String status;
                 if (submission != null) {
                     status = submission.getStatus();
-                    if (status.equals(getString(R.string.OK))) {
+                    if (status.equals(getString(R.string.label_ok))) {
                         countOfCalls++;
                         swipeContainer.setRefreshing(false);
                         View loadingIndicator = findViewById(R.id.loading_indicator_submission);
@@ -107,13 +118,13 @@ public class SubmissionActivity extends AppCompatActivity {
                         showSubmissions(submission);
                     } else {
                         // is it relevant ? IMO you can render empty view here.
-                        Snackbar.make(coordinatorLayout, getString(R.string.WrongHandle), Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(coordinatorLayout, getString(R.string.msg_wrong_handle), Snackbar.LENGTH_SHORT).show();
                         // TODO: Delayed backpress
                         SubmissionActivity.super.onBackPressed();
                     }
                 } else {
                     // is it relevant ? IMO you can render empty view here.
-                    Snackbar.make(coordinatorLayout, getString(R.string.WrongHandle), Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(coordinatorLayout, getString(R.string.msg_wrong_handle), Snackbar.LENGTH_SHORT).show();
                     // TODO: Delayed backpress
                     SubmissionActivity.super.onBackPressed();
                 }

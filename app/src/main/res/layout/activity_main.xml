@@ -12,7 +12,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/margin_110"
         android:gravity="center"
-        android:text="@string/enter_handle"
+        android:text="@string/msg_enter_handle"
         android:textSize="@dimen/text_25" />
 
     <EditText
@@ -20,7 +20,7 @@
         android:layout_width="@dimen/width_200"
         android:layout_height="@dimen/height_40"
         android:layout_centerInParent="true"
-        android:hint="@string/handle" />
+        android:hint="@string/label_handle" />
 
     <Button
         android:layout_width="@dimen/width_30"
@@ -40,7 +40,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/margin_150"
-        android:text="@string/enter_handle_again"
+        android:text="@string/msg_enter_handle_again"
         android:textSize="@dimen/text_20"
         android:visibility="gone" />
 

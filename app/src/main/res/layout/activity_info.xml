@@ -105,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:onClick="onClickSubmission"
-                        android:text="@string/recent_submissions"
+                        android:text="@string/label_recent_submissions"
                         android:visibility="gone" />
 
                 </LinearLayout>

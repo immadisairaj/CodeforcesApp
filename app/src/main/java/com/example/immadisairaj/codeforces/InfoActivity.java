@@ -49,7 +49,7 @@ public class InfoActivity extends AppCompatActivity {
         loadingIndicator.setVisibility(View.VISIBLE);
 
         Bundle bundle = getIntent().getExtras();
-        handle = bundle.getString(getString(R.string.handle));
+        handle = bundle.getString(getString(R.string.label_handle));
 
         fetchApi();
 
@@ -86,7 +86,7 @@ public class InfoActivity extends AppCompatActivity {
                 String status;
                 if (info != null) {
                     status = info.getStatus();
-                    if (status.equals(getString(R.string.OK))) {
+                    if (status.equals(getString(R.string.label_ok))) {
                         countOfCalls++;
                         swipeContainer.setRefreshing(false);
                         View loadingIndicator = findViewById(R.id.loading_indicator_info);
@@ -94,12 +94,12 @@ public class InfoActivity extends AppCompatActivity {
                         Snackbar.make(coordinatorLayout, handle, Snackbar.LENGTH_SHORT).show();
                         showInfo(info);
                     } else {
-                        Snackbar.make(coordinatorLayout, getString(R.string.WrongHandle), Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(coordinatorLayout, getString(R.string.msg_wrong_handle), Snackbar.LENGTH_SHORT).show();
                         delayedBackpress();
                         //InfoActivity.super.onBackPressed();
                     }
                 } else {
-                    Snackbar.make(coordinatorLayout, getString(R.string.WrongHandle), Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(coordinatorLayout, getString(R.string.msg_wrong_handle), Snackbar.LENGTH_SHORT).show();
                     delayedBackpress();
                     //InfoActivity.super.onBackPressed();
                 }
@@ -139,51 +139,81 @@ public class InfoActivity extends AppCompatActivity {
 
         List<Result> results = info.getResult();
 
-        Result result = results.get(0);
+        Result result = handleNulls(results.get(0));
 
         ImageView imageView = findViewById(R.id.iv_image);
         Glide.with(this).load("https:" + result.getTitlePhoto()).into(imageView);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         TextView textView = findViewById(R.id.tv_name_info);
-        if (result.getFirstName() != null)
-            textView.setText(getString(R.string.Name) + result.getFirstName() + " " + result.getLastName());
-        else
-            textView.setText(getString(R.string.Name) + getString(R.string.Not_Provided));
+        textView.setText(getString(R.string.msg_info_template,
+                getString(R.string.label_name),
+                getString(R.string.msg_name_template, result.getFirstName(), result.getLastName())));
 
         textView = findViewById(R.id.tv_country_info);
-        if (result.getCity() != null)
-            textView.setText(getString(R.string.City) + result.getCity() + ", " + result.getCountry());
-        else
-            textView.setText(getString(R.string.City) + getString(R.string.City_Not_Provided));
+        textView.setText(getString(R.string.msg_info_template, getString(R.string.label_location),
+                result.getAddress()));
 
         textView = findViewById(R.id.tv_organization_info);
-        if (result.getOrganization() != null)
-            textView.setText(getString(R.string.Organization) + result.getOrganization());
-        else
-            textView.setText(getString(R.string.Organization) + getString(R.string.Organization_Not_Provided));
+        textView.setText(getString(R.string.msg_info_template, getString(R.string.label_organization),
+                result.getOrganization()));
 
         textView = findViewById(R.id.tv_rating_info);
-        textView.setText(getString(R.string.Rating) + result.getRating().toString());
+        textView.setText(getString(R.string.msg_info_template, getString(R.string.label_rating),
+                String.valueOf(result.getRating())));
 
         textView = findViewById(R.id.tv_max_rating_info);
-        textView.setText(getString(R.string.Max_Rating) + result.getMaxRating().toString());
+        textView.setText(getString(R.string.msg_info_template, getString(R.string.label_max_rating),
+                String.valueOf(result.getMaxRating())));
 
         textView = findViewById(R.id.tv_rank_info);
-        textView.setText(getString(R.string.Rank) + result.getRank());
+        textView.setText(getString(R.string.msg_info_template, getString(R.string.label_rank), result.getRank()));
 
         textView = findViewById(R.id.tv_max_rank_info);
-        textView.setText(getString(R.string.Max_Rank) + result.getMaxRank());
+        textView.setText(getString(R.string.msg_info_template, getString(R.string.label_max_rank),
+                result.getMaxRank()));
 
         Button button = findViewById(R.id.button_submission);
         button.setVisibility(View.VISIBLE);
 
     }
 
+    private Result handleNulls(Result result) {
+        final String na = getResources().getString(R.string.msg_na);
+        if (result.getFirstName() == null)
+            result.setFirstName(na);
+        if (result.getLastName() == null)
+            result.setLastName(na);
+        if (result.getCity() == null) {
+            result.setCity(na);
+            if (result.getCountry() == null) {
+                result.setAddress(na);
+                result.setCountry(na);
+            } else {
+                result.setAddress(result.getCountry());
+            }
+        } else {
+            result.setAddress(getString(R.string.msg_address_template,
+                    result.getCity(), result.getCountry()));
+        }
+        if (result.getCountry() == null)
+            result.setCountry(na);
+        if (result.getMaxRank() == null)
+            result.setMaxRank(na);
+        if (result.getOrganization() == null)
+            result.setOrganization(na);
+        if (result.getRank() == null) {
+            result.setRank(na);
+            result.setRating(0);
+            result.setMaxRating(0);
+        }
+        return result;
+    }
+
     public void onClickSubmission(View view) {
         Intent intent = new Intent(this, SubmissionActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString(getString(R.string.handle), handle);
+        bundle.putString(getString(R.string.label_handle), handle);
         intent.putExtras(bundle);
         startActivity(intent);
     }
